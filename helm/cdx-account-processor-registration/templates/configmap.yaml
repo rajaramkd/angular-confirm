@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: {{ .Values.configmap.cdx.name }}
+data:
+  CDX_CASSANDRA_HOSTS: {{ .Values.configmap.cdx.cassandra.hosts | quote }}
+  CDX_CASSANDRA_KEYSPACE: {{ .Values.configmap.cdx.cassandra.keyspace | quote }}
+  CDX_CASSANDRA_USERNAME: {{ .Values.configmap.cdx.cassandra.username | quote }}
+  CDX_CASSANDRA_PASSWORD_KVKEY: {{ .Values.configmap.cdx.cassandra.password.kvkey | quote }}
+  CDX_CASSANDRA_PASSWORD_VERSION: {{ .Values.configmap.cdx.cassandra.password.version | quote }}
+  CDX_CASSANDRA_SSL_ENABLED: {{ .Values.configmap.cdx.cassandra.ssl.enabled | quote }}
+  CDX_CASSANDRA_TRUSTSTORE_PATH: {{ .Values.configmap.cdx.cassandra.truststore.path | quote }}
+  CDX_CASSANDRA_TRUSTSTORE_PASSWORD_KVKEY: {{ .Values.configmap.cdx.cassandra.truststore.password.kvkey | quote }}
+  CDX_CASSANDRA_TRUSTSTORE_PASSWORD_VERSION: {{ .Values.configmap.cdx.cassandra.truststore.password.version | quote }}
+  CDX_CASSANDRA_XYZ: {{ .Values.configmap.cdx.cassandra.xyz | quote }}
+  CDX_AKKA_STREAM_PARALLELISM: {{ .Values.configmap.cdx.akka.stream.parallelism | quote }}
+  CDX_AKKA_STREAM_BATCH_SIZE: {{ .Values.configmap.cdx.akka.stream.batch.size | quote }}
+  CDX_AKKA_STREAM_BATCH_TIME_WINDOW_IN_SECONDS: {{ .Values.configmap.cdx.akka.stream.batch.time.window.in.seconds | quote }}
+  CDX_EVENTHUB_NAMESPACE: {{ .Values.configmap.cdx.eventhub.namespace | quote }}
+  CDX_EVENTHUB_SYNDICATION_PATH: {{ .Values.configmap.cdx.eventhub.syndication.path | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_KEYNAME: {{ .Values.configmap.cdx.eventhub.shared.access.keyname | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_PASSWORD_KVKEY: {{ .Values.configmap.cdx.eventhub.shared.access.password.kvkey | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_PASSWORD_KVKEY_VERSION: {{ .Values.configmap.cdx.eventhub.shared.access.password.kvkey.version | quote }}
+  CDX_EVENTHUB_NAMESPACE: {{ .Values.configmap.cdx.eventhub.namespace | quote }}
+  CDX_EVENTHUB_PATH_REPROCESS: {{ .Values.configmap.cdx.eventhub.path.reprocess | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_KEYNAME: {{ .Values.configmap.cdx.eventhub.shared.access.keyname | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_PASSWORD_KVKEY: {{ .Values.configmap.cdx.eventhub.shared.access.password.kvkey | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_PASSWORD_KVKEY_VERSION: {{ .Values.configmap.cdx.eventhub.shared.access.password.kvkey.version | quote }}
+  CDX_EVENTHUB_CONSUMER_HOSTNAME: {{ .Values.configmap.cdx.eventhub.consumer.hostname | quote }}
+  CDX_EVENTHUB_CONSUMER_GROUP_CREATE: {{ .Values.configmap.cdx.eventhub.consumer.group.create | quote }}
+  CDX_EVENTHUB_NAMESPACE: {{ .Values.configmap.cdx.eventhub.namespace | quote }}
+  CDX_EVENTHUB_INGESTION_PATH_CREATE: {{ .Values.configmap.cdx.eventhub.ingestion.path.create | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_KEYNAME: {{ .Values.configmap.cdx.eventhub.shared.access.keyname | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_PASSWORD_KVKEY: {{ .Values.configmap.cdx.eventhub.shared.access.password.kvkey | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_PASSWORD_KVKEY_VERSION: {{ .Values.configmap.cdx.eventhub.shared.access.password.kvkey.version | quote }}
+  CDX_EVENTHUB_STORAGECONTAINER_NAME: {{ .Values.configmap.cdx.eventhub.storagecontainer.name | quote }}
+  CDX_EVENTHUB_STORAGE_NAME: {{ .Values.configmap.cdx.eventhub.storage.name | quote }}
+  CDX_EVENTHUB_STORAGE_KVKEY: {{ .Values.configmap.cdx.eventhub.storage.kvkey | quote }}
+  CDX_EVENTHUB_STORAGE_KEY_VERSION: {{ .Values.configmap.cdx.eventhub.storage.key.version | quote }}
+  CDX_EVENTHUB_NAMESPACE: {{ .Values.configmap.cdx.eventhub.namespace | quote }}
+  CDX_EVENTHUB_PATH_DLQ: {{ .Values.configmap.cdx.eventhub.path.dlq | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_KEYNAME: {{ .Values.configmap.cdx.eventhub.shared.access.keyname | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_PASSWORD_KVKEY: {{ .Values.configmap.cdx.eventhub.shared.access.password.kvkey | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_PASSWORD_KVKEY_VERSION: {{ .Values.configmap.cdx.eventhub.shared.access.password.kvkey.version | quote }}
+  CDX_HEALTHCHECK_HTTP_HOST: {{ .Values.configmap.cdx.healthcheck.http.host | quote }}
+  CDX_HEALTHCHECK_HTTP_PORT: {{ .Values.configmap.cdx.healthcheck.http.port | quote }}
+  CDX_HEALTHCHECK_HTTPS_HOST: {{ .Values.configmap.cdx.healthcheck.https.host | quote }}
+  CDX_HEALTHCHECK_HTTPS_PORT: {{ .Values.configmap.cdx.healthcheck.https.port | quote }}
