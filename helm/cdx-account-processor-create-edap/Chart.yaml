@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A Helm chart for cdx account processor-create-edap in Kubernetes
+name: cdx-account-processor-create-edap
+version: 0.1.0

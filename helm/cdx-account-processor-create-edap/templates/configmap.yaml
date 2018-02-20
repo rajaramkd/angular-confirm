@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: {{ .Chart.Name }}
+  labels: 
+    app: {{ .Values.deployment.app }}
+data: 
+  CDX_AZURE_TENANT_ID: {{ .Values.configmap.cdx_azure_tenant_id | quote }}
+  CDX_AZURE_KEYVAULT_HOST: {{ .Values.configmap.cdx_azure_keyvault_host | quote }}
+  CDX_AZURE_KEYVAULT_URL: {{ .Values.configmap.cdx_azure_keyvault_url | quote }}
+  CDX_CASSANDRA_HOSTS: {{ .Values.configmap.cdx_cassandra_hosts | quote }}
+  CDX_CASSANDRA_KEYSPACE: {{ .Values.configmap.cdx_cassandra_keyspace | quote }}
+  CDX_CASSANDRA_USERNAME: {{ .Values.configmap.cdx_cassandra_username | quote }}
+  CDX_CASSANDRA_PASSWORD_KVKEY: {{ .Values.configmap.cdx_cassandra_password_kvkey | quote }}
+  CDX_CASSANDRA_PASSWORD_VERSION: {{ .Values.configmap.cdx_cassandra_password_version | quote }}
+  CDX_CASSANDRA_SSL_ENABLED: {{ .Values.configmap.cdx_cassandra_ssl_enabled | quote }}
+  CDX_CASSANDRA_TRUSTSTORE_PATH: {{ .Values.configmap.cdx_cassandra_truststore_path | quote }}
+  CDX_CASSANDRA_TRUSTSTORE_PASSWORD_KVKEY: {{ .Values.configmap.cdx_cassandra_truststore_password_kvkey | quote }}
+  CDX_CASSANDRA_TRUSTSTORE_PASSWORD_VERSION: {{ .Values.configmap.cdx_cassandra_truststore_password_version | quote }}
+  CDX_AKKA_STREAM_PARALLELISM: {{ .Values.configmap.cdx_akka_stream_parallelism | quote }}
+  CDX_AKKA_STREAM_BATCH_SIZE: {{ .Values.configmap.cdx_akka_stream_batch_size | quote }}
+  CDX_AKKA_STREAM_BATCH_TIME_WINDOW_IN_SECONDS: {{ .Values.configmap.cdx_akka_stream_batch_time_window_in_seconds | quote }}
+  CDX_EVENTHUB_NAMESPACE: {{ .Values.configmap.cdx_eventhub_namespace | quote }}
+  CDX_EVENTHUB_SYNDICATION_PATH: {{ .Values.configmap.cdx_eventhub_syndication_path | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_KEYNAME: {{ .Values.configmap.cdx_eventhub_shared_access_keyname | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_PASSWORD_KVKEY: {{ .Values.configmap.cdx_eventhub_shared_access_password_kvkey | quote }}
+  CDX_EVENTHUB_SHARED_ACCESS_PASSWORD_KVKEY_VERSION: {{ .Values.configmap.cdx_eventhub_shared_access_password_kvkey_version | quote }}
+  CDX_EVENTHUB_PATH_REPROCESS: {{ .Values.configmap.cdx_eventhub_path_reprocess | quote }}
+  CDX_EVENTHUB_CONSUMER_HOSTNAME: {{ .Values.configmap.cdx_eventhub_consumer_hostname | quote }}
+  CDX_EVENTHUB_CONSUMER_GROUP_CREATE: {{ .Values.configmap.cdx_eventhub_consumer_group_create | quote }}
+  CDX_EVENTHUB_INGESTION_PATH_CREATE: {{ .Values.configmap.cdx_eventhub_ingestion_path_create | quote }}
+  CDX_EVENTHUB_STORAGECONTAINER_NAME: {{ .Values.configmap.cdx_eventhub_storagecontainer_name | quote }}
+  CDX_EVENTHUB_STORAGE_NAME: {{ .Values.configmap.cdx_eventhub_storage_name | quote }}
+  CDX_EVENTHUB_STORAGE_KVKEY: {{ .Values.configmap.cdx_eventhub_storage_kvkey | quote }}
+  CDX_EVENTHUB_STORAGE_KEY_VERSION: {{ .Values.configmap.cdx_eventhub_storage_key_version | quote }}
+  CDX_EVENTHUB_PATH_DLQ: {{ .Values.configmap.cdx_eventhub_path_dlq | quote }}
+  CDX_HEALTHCHECK_HTTP_HOST: {{ .Values.configmap.cdx_healthcheck_http_host | quote }}
+  CDX_HEALTHCHECK_HTTP_PORT: {{ .Values.configmap.cdx_healthcheck_http_port | quote }}
+  CDX_HEALTHCHECK_HTTPS_HOST: {{ .Values.configmap.cdx_healthcheck_https_host | quote }}
+  CDX_HEALTHCHECK_HTTPS_PORT: {{ .Values.configmap.cdx_healthcheck_https_port | quote }}
+  CDX_EH_CONSUMER_MAX_THROTTLE_LIMIT: {{ .Values.configmap.cdx_eh_consumer_max_throttle_limit | quote }}
+  CDX_EH_CONSUMER_TIME_OUT_IN_MINUTES: {{ .Values.configmap.cdx_eh_consumer_time_out_in_minutes | quote }}
+  AZURE_KEYVAULT_SECRETS_CASSANDRA_SECRET_KEY: {{ .Values.configmap.cdx_azure_keyvault_secrets_cassandra_secret_key | quote }}
+  AZURE_KEYVAULT_SECRETS_CASSANDRA_SECRET_VERSION: {{ .Values.configmap.cdx_azure_keyvault_secrets_cassandra_secret_version | quote }}
+  CDX_AZURE_ENCRYPTAES_SECRET_KVKEY: {{ .Values.configmap.cdx_azure_encryptaes_secret_kvkey | quote }}
+  CDX_AZURE_ENCRYPTAES_SECRET_KVKEY_VERSION: {{ .Values.configmap.cdx_azure_encryptaes_secret_kvkey_version | quote }}
+  CDX_AZURE_ENCRYPTIV_SALT_KVKEY: {{ .Values.configmap.cdx_azure_encryptiv_salt_kvkey | quote }}
+  CDX_AZURE_ENCRYPTIV_SALT_KVKEY_VERSION: {{ .Values.configmap.cdx_azure_encryptiv_salt_kvkey_version | quote }}
+  CDX_AZURE_PAYLOAD_ENCRYPTAES_SECRET_KVKEY: {{ .Values.configmap.cdx_azure_payload_encryptaes_secret_kvkey | quote }}
+  CDX_AZURE_PAYLOAD_ENCRYPTAES_SECRET_KVKEY_VERSION: {{ .Values.configmap.cdx_azure_payload_encryptaes_secret_kvkey_version | quote }}
+  CDX_AZURE_PAYLOAD_ENCRYPTIV_SALT_KVKEY: {{ .Values.configmap.cdx_azure_payload_encryptiv_salt_kvkey | quote }}
+  CDX_AZURE_PAYLOAD_ENCRYPTIV_SALT_KVKEY_VERSION: {{ .Values.configmap.cdx_azure_payload_encryptiv_salt_kvkey_version | quote }}
