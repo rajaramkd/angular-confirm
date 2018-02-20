@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: cdx
+    ingress.kubernetes.io/force-ssl-redirect: "false"
+    ingress.kubernetes.io/ssl-redirect: "false"
+    ingress.kubernetes.io/rewrite-target: /consumer
+  name: cdx-account-service-registration-edap
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: cdx-account-service-registration-edap
+          servicePort: 7010
+        path: /us/v1/registration/consumer
+      - backend:
+          serviceName: cdx-caccount-service-registration-edap
+          servicePort: 7010
+        path: /ca/v1/registration/consumer
+      - backend:
+          serviceName: cdx-account-service-registration-edap
+          servicePort: 7010
+        path: /oth/v1/registration/consumer
