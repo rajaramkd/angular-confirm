@@ -1,0 +1,97 @@
+configmap:
+  cdx_eventhub_consumer_group_stage: evhcdx-account-staging-csg1
+
+# Additional keyvalues from Application.conf added here, update values if needed.
+  cdx_cassandra_hosts: 10.18.140.150,10.18.140.151,10.18.140.152
+  cdx_cassandra_keyspace: cust_usa_pd
+  cdx_cassandra_username: cdxapi_db_nprod
+  cdx_cassandra_password_kvkey: cdxapi-pd-us-db-password-key
+  cdx_cassandra_password_version:
+  cdx_cassandra_ssl_enabled: True
+  cdx_cassandra_truststore_path: /tmp/cassandra.truststore
+  cdx_cassandra_truststore_password_kvkey: cdxapi-pd-us-db-truststore-password-key
+  cdx_cassandra_truststore_password_version:
+  cdx_cassandra_xyz:
+  cdx_akka_stream_parallelism:
+  cdx_akka_stream_batch_size:
+  cdx_akka_stream_batch_time_window_in_seconds:
+  cdx_eventhub_namespace: s00199-enscdx-pd-us-account-n1
+  cdx_eventhub_syndication_path:
+  cdx_eventhub_shared_access_keyname: enscdx-account-SASsendlisten
+  cdx_eventhub_shared_access_password_kvkey: cdxevh-pd-us-access-key-account-n1
+  cdx_eventhub_shared_access_password_kvkey_version:
+  cdx_eventhub_path_reprocess:
+  cdx_eventhub_consumer_hostname:
+  cdx_eventhub_consumer_group_create:
+  cdx_eventhub_ingestion_path_create:
+  cdx_eventhub_storagecontainer_name:
+  cdx_eventhub_storage_name:
+  cdx_eventhub_storage_kvkey:
+  cdx_eventhub_storage_key_version:
+  cdx_eventhub_path_dlq: evhcdx-account-dlq
+  cdx_healthcheck_http_host: 0.0.0.0
+  cdx_healthcheck_http_port: 7030
+  cdx_healthcheck_https_host: 0.0.0.0
+  cdx_healthcheck_https_port: 7040
+
+deployment:
+  spec:
+    replicas: 1
+    minreadyseconds: 35
+    strategy:
+      type: RollingUpdate
+      maxunavailable: 1
+      maxsurge: 2    
+  app: cdx-account-service-registration-edap
+  container:
+    image: image
+    resources:
+      memory:
+        limits: 1Gi
+        requests: 1Gi
+      cpu:
+        limits: "1"
+        requests: "0.1"
+    port: 
+      cdx: 7010
+      healthz: 7030
+    livenessprobe:
+      httpget:
+        path: /health
+        port: healthz
+      initialdelayseconds: 60
+      periodseconds: 30
+      timeoutseconds: 10
+    readinessprobe:
+      httpget:
+        path: /health
+        port: healthz
+      initialdelayseconds: 60
+      periodseconds: 30
+      timeoutseconds: 10
+  envform:
+    name: cdx-account-service-registration-edap
+  envs:
+    env1:
+      name: CDX_EVENTHUB_CONSUMER_HOSTNAME
+      fieldref:
+        apiversion: v1
+        fieldpath: metadata.name
+    env2:
+      name: CDX_AZURE_KEYVAULT_SP_APP_ID
+      secretkeyref:
+        name: cdx-azure-keyvault-sp
+        key: cdx-azure-keyvault-sp-appid
+    env3:
+      name: CDX_AZURE_KEYVAULT_SP_APP_SECRET
+      secretkeyref:
+        name: cdx-azure-keyvault-sp
+        key: cdx-azure-keyvault-sp-app-secret
+  imagepullsecrets:
+    name: s00199cregccdxkey
+
+autoscale:
+  spec:
+    minreplicas: 2
+    maxreplicas: 5
+    targetcpuutil: 50
