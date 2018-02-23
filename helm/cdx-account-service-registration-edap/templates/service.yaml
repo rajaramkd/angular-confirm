@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cdx-account-service-registration-edap
+  name: cdx-account-service-registration-edap
+  namespace: pd
+spec:
+  ports:
+  - port: 7010
+    protocol: TCP
+    targetPort: 7010
+  selector:
+    app: cdx-account-service-registration-edap
+  sessionAffinity: None
+  type: ClusterIP

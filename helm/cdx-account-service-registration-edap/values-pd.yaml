@@ -1,0 +1,72 @@
+configmap:
+  cdx_eventhub_consumer_group_stage: evhcdx-account-staging-csg1
+
+# Additional keyvalues from Application.conf added here, update values if needed.
+  cdx_cassandra_hosts: 10.18.140.150,10.18.140.151,10.18.140.152
+  cdx_cassandra_keyspace: cust_usa_pd
+  cdx_cassandra_ssl_enabled: True
+  cdx_cassandra_truststore_path: /tmp/cassandra.truststore
+  abc:
+  xyz:
+
+deployment:
+  spec:
+    replicas: 1
+    minreadyseconds: 35
+    strategy:
+      type: RollingUpdate
+      maxunavailable: 1
+      maxsurge: 2    
+  app: cdx-account-service-registration-edap
+  container:
+    image: image
+    resources:
+      memory:
+        limits: 1Gi
+        requests: 1Gi
+      cpu:
+        limits: "1"
+        requests: "0.1"
+    port: 
+      cdx: 7010
+      healthz: 7030
+    livenessprobe:
+      httpget:
+        path: /health
+        port: healthz
+      initialdelayseconds: 60
+      periodseconds: 30
+      timeoutseconds: 10
+    readinessprobe:
+      httpget:
+        path: /health
+        port: healthz
+      initialdelayseconds: 60
+      periodseconds: 30
+      timeoutseconds: 10
+  envform:
+    name: cdx-account-service-registration-edap
+  envs:
+    env1:
+      name: CDX_EVENTHUB_CONSUMER_HOSTNAME
+      fieldref:
+        apiversion: v1
+        fieldpath: metadata.name
+    env2:
+      name: CDX_AZURE_KEYVAULT_SP_APP_ID
+      secretkeyref:
+        name: cdx-azure-keyvault-sp
+        key: cdx-azure-keyvault-sp-appid
+    env3:
+      name: CDX_AZURE_KEYVAULT_SP_APP_SECRET
+      secretkeyref:
+        name: cdx-azure-keyvault-sp
+        key: cdx-azure-keyvault-sp-app-secret
+  imagepullsecrets:
+    name: s00199cregccdxkey
+
+autoscale:
+  spec:
+    minreplicas: 2
+    maxreplicas: 5
+    targetcpuutil: 50
