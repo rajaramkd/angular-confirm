@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A Helm chart for cdx account service-registration-edap in Kubernetes
+name: cdx-account-service-registration-edap
+version: 0.1.0

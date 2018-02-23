@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: {{ .Chart.Name }}
+  labels: 
+    app: {{ .Values.deployment.app }}
+data: 
+  CDX_AZURE_TENANT_ID: {{ .Values.configmap.cdx_azure_tenant_id | quote }}
+  CDX_AZURE_KEYVAULT_HOST: {{ .Values.configmap.cdx_azure_keyvault_host | quote }}
+  CDX_AZURE_KEYVAULT_URL: {{ .Values.configmap.cdx_azure_keyvault_url | quote }}
+  CDX_CASSANDRA_HOSTS: {{ .Values.configmap.cdx_cassandra_hosts | quote }}
+  CDX_CASSANDRA_KEYSPACE: {{ .Values.configmap.cdx_cassandra_keyspace | quote }}
+  CDX_CASSANDRA_SSL_ENABLED: {{ .Values.configmap.cdx_cassandra_ssl_enabled | quote }}
+  CDX_CASSANDRA_TRUSTSTORE_PATH: {{ .Values.configmap.cdx_cassandra_truststore_path | quote }}
+  ABC: {{ .Values.configmap.abc | quote }}
+  XYZ: {{ .Values.configmap.xyz | quote }}
+  CDX_EH_CONSUMER_MAX_THROTTLE_LIMIT: {{ .Values.configmap.cdx_eh_consumer_max_throttle_limit | quote }}
+  CDX_EH_CONSUMER_TIME_OUT_IN_MINUTES: {{ .Values.configmap.cdx_eh_consumer_time_out_in_minutes | quote }}
+  AZURE_KEYVAULT_SECRETS_CASSANDRA_SECRET_KEY: {{ .Values.configmap.cdx_azure_keyvault_secrets_cassandra_secret_key | quote }}
+  AZURE_KEYVAULT_SECRETS_CASSANDRA_SECRET_VERSION: {{ .Values.configmap.cdx_azure_keyvault_secrets_cassandra_secret_version | quote }}
+  CDX_AZURE_ENCRYPTAES_SECRET_KVKEY: {{ .Values.configmap.cdx_azure_encryptaes_secret_kvkey | quote }}
+  CDX_AZURE_ENCRYPTAES_SECRET_KVKEY_VERSION: {{ .Values.configmap.cdx_azure_encryptaes_secret_kvkey_version | quote }}
+  CDX_AZURE_ENCRYPTIV_SALT_KVKEY: {{ .Values.configmap.cdx_azure_encryptiv_salt_kvkey | quote }}
+  CDX_AZURE_ENCRYPTIV_SALT_KVKEY_VERSION: {{ .Values.configmap.cdx_azure_encryptiv_salt_kvkey_version | quote }}
+  CDX_AZURE_PAYLOAD_ENCRYPTAES_SECRET_KVKEY: {{ .Values.configmap.cdx_azure_payload_encryptaes_secret_kvkey | quote }}
+  CDX_AZURE_PAYLOAD_ENCRYPTAES_SECRET_KVKEY_VERSION: {{ .Values.configmap.cdx_azure_payload_encryptaes_secret_kvkey_version | quote }}
+  CDX_AZURE_PAYLOAD_ENCRYPTIV_SALT_KVKEY: {{ .Values.configmap.cdx_azure_payload_encryptiv_salt_kvkey | quote }}
+  CDX_AZURE_PAYLOAD_ENCRYPTIV_SALT_KVKEY_VERSION: {{ .Values.configmap.cdx_azure_payload_encryptiv_salt_kvkey_version | quote }}
